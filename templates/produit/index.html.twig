@@ -23,8 +23,8 @@
                 <td>{{ produit.description }}</td>
                 <td><img src="{{ produit.image }}"></td>
                 <td>
-                    <a href="{{ path('produit_show', {'id': produit.id}) }}">show</a>
-                    <a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>
+                    <button><a href="{{ path('produit_show', {'id': produit.id}) }}">show</a></button>
+                    <button><a href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a></button>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('produit_new') }}">Create new</a>
+    <button><a href="{{ path('produit_new') }}">Create new</a></button>
 {% endblock %}
