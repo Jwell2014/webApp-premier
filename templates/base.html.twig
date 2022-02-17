@@ -7,8 +7,11 @@
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            <link rel="stylesheet" href="{{ asset('css/BC.css') }}">
             <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
             <link rel="stylesheet" href="{{ asset('css/cookie.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/accordeons.css') }}">
+
 
         {% endblock %}
 
@@ -18,7 +21,10 @@
         {% endblock %}
     </head>
     <body>
+    {% include 'Parts/menu.html.twig' %}
         {% block body %}{% endblock %}
+
+        <!-- Gestion de cookie -->
 
         {% if app.request.cookies.get('accepted') != true %}
         <div class="cookie-consent">
@@ -33,5 +39,6 @@
             </div>
         </div>
         {% endif %}
+        {% include 'Parts/footer.html.twig' %}
     </body>
 </html>

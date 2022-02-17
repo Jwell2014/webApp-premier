@@ -21,8 +21,10 @@ class DefaultController extends AbstractController
     public function index(): Response
     {
         $produits = $this->produitRepository->findAll();
+        $date = new \DateTime();
         return $this->render('default/index.html.twig', [
             'produits' => $produits,
+            'date' => $date,
         ]);
     }
 

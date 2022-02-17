@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Administration!{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/admin/style.css') }}">
+        <link rel="stylesheet" href="{{ asset ('css/admin/materialdesignicons.min.css') }}">
+        <link rel="stylesheet" href="{{ asset ('css/admin/vendor.bundle.base.css') }}">
+        <!-- endinject -->
+        <!-- Plugin css for this page -->
+        <link rel="stylesheet" href="{{ asset ('css/admin/jquery-jvectormap.css') }}">
+        <link rel="stylesheet" href="{{ asset ('css/admin/flag-icon.min.css') }}">
+        <link rel="stylesheet" href="{{ asset ('css/admin/carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset ('css/admin/theme.default.min.css') }}">
+
+    {% endblock %}
+
+    {% block javascripts %}
+        <script rel="script" src="{{ asset('js/bootstrap.bundle.js') }}"></script>
+        <script src="{{asset ('js/admin/bundle.base.js ') }}"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <script src="{{ asset ('js/admin/Chart.min.js') }}"></script>
+        <script src="{{  asset ('js/admin/progressbar.min.js')}}"></script>
+        <script src="{{ asset ('js/admin/jquery-jvectormap.min.js') }}"></script>
+        <script src="{{asset ('js/admin/jquery-jvectormap-world-mill-en.js')  }}"></script>
+        <script src="{{ asset ('js/admin/owl.carousel.min.js') }}"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="{{asset ('js/admin/off-canvas.js')  }}"></script>
+        <script src="{{ asset ('js/admin/hoverable-collapse.js') }}"></script>
+        <script src="{{ asset ('js/admin/misc.js') }}"></script>
+        <script src="{{ asset ('js/admin/settings.js') }}"></script>
+        <script src="{{ asset ('js/admin/todolist.js') }}"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page -->
+        <script src="{{ asset ('js/admin/dashboard.js') }}"></script>
+    {% endblock %}
+</head>
+<body>
+
+{% block body %}
+
+{% endblock %}
+
+
+</body>
+</html>

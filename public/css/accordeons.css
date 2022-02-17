@@ -1,0 +1,94 @@
+/*###############################################################*/
+/* Accordion page d'accueil */
+/*###############################################################*/
+
+.accordion1 {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    height: 500px;
+    margin: 20px auto;
+    display: flex;
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.47);
+    flex-direction: row;
+    cursor: pointer;
+    margin-bottom: 100px;
+}
+.box {
+    position: relative;
+    height: 100%;
+    flex: 1;
+    background-position: left;
+    background-size: cover;
+    transition: 0.7s;
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.47);
+}
+.box:hover {
+    flex: 7;
+    height: 500px;
+}
+.a1 {
+    background-image: url("../image/chienSlide.jpg");
+    color: #fff;
+}
+.a2 {
+    background-image: url("../image/chatSlide.jpg");
+    color: #fff;
+}
+.a3 {
+    background-image: url("../image/chevalSlide.jpg");
+    color: #fff;
+}
+.a4 {
+    background-image: url("../image/oiseauslide.jpg");
+    color: #fff;
+}
+.a5 {
+    background-image: url("../image/lapinslide.jpg");
+    color: #fff;
+}
+p {
+    font-weight: normal;
+    font-family: "Exo 2", sans-serif;
+}
+.text {
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    letter-spacing: inherit;
+    font-size: 20px;
+    background-color: black;
+    border: 1px solid #e9e8e8;
+    padding: 10px 5px 0;
+    border-radius: 5px;
+}
+.lien {
+    color: aliceblue !important;
+    text-decoration: none !important;
+}
+.lienproduit {
+    color: black;
+    text-decoration: none;
+}
+a:hover {
+    color: cadetblue !important;
+}
+.box:hover .text {
+    opacity: 1;
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        margin: 0;
+    }
+    .accordion {
+        flex-direction: column;
+        height: 700px;
+        box-shadow: none;
+    }
+    .box {
+        box-shadow: none;
+    }
+    .box:hover {
+        flex: 7;
+    }
+}
