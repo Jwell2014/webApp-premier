@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur l'animalerie!{% endblock %}
+
+{% block body %}
+<div class="container">
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <img class="img-fluid" src="{{ produit.image }}">
+            </div>
+            <div class="col-md-8">
+                <h2>{{ produit.nom }}</h2>
+                <br>
+                <span>{{ produit.description }}</span>
+            </div>
+
+        </div>
+    <a class="btn btn-primary" href="{{ path('default') }}">Retour</a>
+</div>
+{% endblock %}
