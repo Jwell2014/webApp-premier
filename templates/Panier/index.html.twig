@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!{% endblock %}
+
+{% block body %}
+    <section class="h-100 h-custom" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+
+
+            <div class="card">
+                <div class="card-body p-4">
+
+
+                    <h5 class="mb-3">
+                        <a href="index.php" class="text-body">
+                            <i class="fas fa-long-arrow-alt-left me-2"></i>
+                            Continuer mes achats
+                        </a>
+                    </h5>
+                    <hr>
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <p class="mb-1">Liste d'achat</p>
+                            <p class="mb-0">Vous avez {{ panier|length }} produit(s) dans votre panier</p>
+                        </div>
+                        <div>
+                            <p class="mb-0"><span class="text-muted">Trier par:</span>
+                                <a href="#!" class="text-body">prix <i class="fas fa-angle-down mt-1"></i></a>
+                            </p>
+                        </div>
+                    </div>
+
+
+                    {% for productOrder in panier %}
+                    {% dump productOrder %}
+                    <div class="card mb-3 mb-lg-0">
+                        <div class="card-body">
+
+                            <div class="d-flex justify-content-between">
+
+                                <div class="d-flex flex-row align-items-center">
+                                    <div>
+
+                                        <img
+                                                src="{{ productOrder.product.image }}"
+                                                class="img-fluid rounded-3 img-thumbnail" alt="Shopping item" style="width: 80px;">
+                                    </div>
+                                    <div class="ms-3">
+                                        <p class="fw-bold text-decoration-underline">Nom du produit</p>
+                                        <h5 class="text-uppercase">{{ productOrder.product.nom }}</h5>
+
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center">
+                                    <div style="width: 100px;">
+                                        <p class="fw-bold text-decoration-underline">Prix Unitaire</p>
+                                        <h5>{{ productOrder.product.prix }} €</h5>
+                                    </div>
+
+                                    <div style="width: 100px;" class="d-flex">
+
+                                        <button class="btn btn-black px-2"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+
+                                        </button>
+
+                                        <input id="form1" min="0" name="quantity_{{ loop.index }}" value="{{ productOrder.quantity }}" type="number"
+                                               class="form-control form-control-sm" />
+
+                                        <button class="btn btn-black px-2"
+                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+
+                                        </button>
+                                    </div>
+                                    <div style="width: 100px;">
+                                        <p class="fw-bold text-decoration-underline">Total</p>
+                                        <h5 >{{ productOrder.product.prix * productOrder.quantity}}</h5>
+                                    </div>
+                                    <a href="#!" style="color: black;"><i class="fas fa-trash-alt"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    <button type="button"  class="btn btn-info btn-block btn-lg">
+                        <div class="d-flex justify-content-between">
+                            <a href="paiement.php"><span>Valider et payer <i class="fas fa-long-arrow-alt-right ms-2"></i></span></a>
+                        </div>
+                    </button>
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+    </section>
+{% endblock %}
