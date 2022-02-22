@@ -15,13 +15,31 @@ class PanierController extends AbstractController{
     #[Route('/', name: 'list')]
     public function index(Request $request): Response
     {
+        // récupère la session
        $panier = $request->getSession()->get('panier');
+
+        // calcul le prix total
+        $prix=0;
+
+        foreach ($panier as $po){
+            $prix += $po->getProduct()->getPrix() * $po->getQuantity();
+        }
+
+        // à faire sinon dès que le panier et vide et la session sup le panier ne s'affiche plus vu qu'il est vide
+        if(!$panier){
+            $panier = [];
+        }
+
+
 
        //Afficher mon panier
         return $this->render('Panier/index.html.twig',[
             'panier'=> $panier,
+            'prix' => $prix
             ]);
     }
+
+
 
     #[Route('/{id}', name: 'add', requirements: ["id"=> '\d+'])]
     public function add(Produit $produit, Request $request){
@@ -42,19 +60,68 @@ class PanierController extends AbstractController{
             $panier = $session->get('panier');
         }
 
-        //J'ajoute l'élément dans mon tableau
-        $panier[] = $productOrder;
+       $exist = false;
+        // Verifie si on as deja ce produit dans le panier
+        foreach ($panier as $productOrde){
+            if($productOrde->getProduct()->getId() == $produit->getId()){
+                $exist = true;
+                $productOrde->setQuantity($productOrde->getQuantity() + 1);
+            }
+        }
+        if (!$exist){
+            $panier[] = $productOrder;
+        }
+
 
         //Je met a jour la session avec le nouveau panier
         $session->set("panier", $panier);
 
         // Je redirige l'utilisateur vers le panier
+        return $this->redirect($request->headers->get('referer'));;
+    }
+
+    #[Route('/remove/{id}', name: 'remove')]
+    public function remove(Produit $produit, Request $request){
+        $session = $request->getSession();
+        $panier = $session->get('panier');
+
+        $delete = null;
+        foreach ($panier as $key=>$productOrder){
+            if($produit->getId() == $productOrder->getProduct()->getId()){
+                $delete = $key;
+            }
+        }
+
+        unset($panier[$delete]);
+
+        $session->set('panier', $panier);
+
         return $this->redirectToRoute('panier_list');
     }
 
-    #[Route('/remove/{id}', name: 'remove', methods: ["GET"], requirements: ["id"=> '\d+'])]
-    public function remove($id){
-        return new Response("Je supprime");
+    // modifier la quantité directement sur le panier (le + & -)
+    #[Route('/{operator}/{id}', name: 'addRemoveOne')]
+    public function imcrementPanier(Produit $produit, Request $request, $operator)
+    {
+
+        $session = $request->getSession();
+        $panier = $session->get('panier');
+
+        foreach ($panier as$po){
+
+            if($po->getProduct()->getId() == $produit->getId()){
+                if($operator == 'plus'){
+                    $po->setQuantity($po->getQuantity()+1);
+                } elseif($operator == 'moins'and $po->getQuantity() > 0 ) {
+                    $po->setQuantity($po->getQuantity()-1);
+                }
+            }
+        }
+
+        $session->set('panier', $panier);
+
+        // je redirige l'utilisateur sur la page ou il est actuellement
+        return $this->redirectToRoute('panier_list');
     }
 
 }
