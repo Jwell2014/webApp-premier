@@ -49,6 +49,30 @@ class ProduitController extends AbstractController
 
             $produit->setImage($newFilename);
 
+            foreach ($form->get('images') as $img){
+
+
+                $imgFiles = $img->get('NomImage')->getData();
+
+                $originalFilename=  pathinfo($imgFiles->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'-'.$imgFiles->guessExtension();
+
+                $imgFiles->move(
+                    $this->getParameter('product_image'),
+                    $newFilename
+                );
+
+                $img = $img->getData();
+
+                $img->setNomImage($newFilename);
+
+                $produit->addImage($img);
+
+                $img->setProduit($produit);
+            }
+
+            //J'enregistre mes produits
             $entityManager->persist($produit);
             $entityManager->flush();
 
@@ -70,12 +94,61 @@ class ProduitController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'produit_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Produit $produit, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Produit $produit, EntityManagerInterface $entityManager, SluggerInterface  $slugger): Response
     {
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //on récupère notre photo dans la requete image correspondant au nom du champ dans notre formulaire
+            $imageProduit = $form->get('image')->getData();
+
+            if ($imageProduit){
+                //Génération d'un nouveau nom sécurisé et unique
+                $originalFilename = pathinfo($imageProduit->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageProduit->guessExtension();
+
+
+                // j'upload le fichier ans le dossier contenu dans services.yamlqui a la clé product.image
+                // Je l'upload avec son  ouveau nom
+                $imageProduit->move(
+                    $this->getParameter('product_image'),
+                    $newFilename
+                );
+
+                //Dans ma BDD j'ajoute e nom unique du fichier pour le trouver
+                $produit->setImage($newFilename);
+
+            }
+
+
+
+           /* foreach ($form->get('images') as $img){
+
+
+                $imgFiles = $img->get('NomImage')->getData();
+
+                $originalFilename=  pathinfo($imgFiles->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'-'.$imgFiles->guessExtension();
+
+                $imgFiles->move(
+                    $this->getParameter('product_image'),
+                    $newFilename
+                );
+
+                $img = $img->getData();
+
+                $img->setNomImage($newFilename);
+
+                $produit->addImage($img);
+
+                $img->setProduit($produit);
+            }*/
+
+            //J'enregistre mes produits
             $entityManager->flush();
 
             return $this->redirectToRoute('produit_index', [], Response::HTTP_SEE_OTHER);

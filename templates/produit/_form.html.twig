@@ -1,4 +1,41 @@
+<div class="container">
+
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+{{ form_row(form.nom) }}
+{{ form_row(form.description) }}
+
+{% if produit is defined   %}
+
+    <div class="border-1">
+        <span>Image actuelle</span>
+        <img class="img-thumbnail w-25" src="{{ asset('image/uploads/product/' ~ produit.image) }}">
+    </div>
+
+    <label>Changer l'image si l'actuelle ne convient pas... </label>
+    {{ form_row(form.image, {'required': false}) }}
+{% else %}
+        {{ form_row(form.image, {'required': true}) }}
+
+    {{ form_row(form.images) }}
+<ul id="image-fields-list"
+
+    data-widget-tags="{{ '<li></li>'|e }}"
+    data-widget-counter="{{ form.images|length }}">
+{% for imageField in form.images %}
+        <li>
+           {# {{ form_errors(emailField) }}
+            {{ form_widget(emailField) }}#}
+        </li>
+{% endfor %}
+</ul>
+
+<button type="button"
+        class="addImage"
+        data-list-selector="#image-fields-list">
+    Ajouter une image
+</button>
+{% endif %}
+
 {{ form_end(form) }}
+</div>

@@ -21,7 +21,12 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td><img src="{{ produit.image }}"></td>
+                <td>
+                    <img class="img-thumbnail w-25" src="{{ asset('image/uploads/product/' ~ produit.image) }}">
+                    {% for image in produit.images %}
+                            <img class="img-thumbnail w-25" src="{{ asset('image/uploads/product/' ~ image.NomImage) }}" alt="{{ image.alt }}">
+                    {% endfor %}
+                </td>
             </tr>
         </tbody>
     </table>

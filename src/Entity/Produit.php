@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
@@ -34,6 +36,14 @@ class Produit
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'produits')]
     #[ORM\JoinColumn(nullable: false)]
     private $parent;
+
+    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Image::class, orphanRemoval: true, cascade: ['persist'])]
+    private $images;
+
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -117,5 +127,35 @@ class Produit
     public function setNbStar($nbStar): void
     {
         $this->nbStar = $nbStar;
+    }
+
+    /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getProduit() === $this) {
+                $image->setProduit(null);
+            }
+        }
+
+        return $this;
     }
 }

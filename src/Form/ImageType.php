@@ -2,24 +2,22 @@
 
 namespace App\Form;
 
-use App\Entity\Produit;
+use App\Entity\Image;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 
-class ProduitType extends AbstractType
+class ImageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('description')
-            ->add('image', FileType::class, [
+            ->add('NomImage', FileType::class, [
                 'mapped'=> false,
+                'attr'=> [ 'class'=> 'form-control'],
                 'required'=> false,
                 'constraints'=> [
                     new File([
@@ -33,22 +31,18 @@ class ProduitType extends AbstractType
                 ]
 
             ])
-            ->add('images', CollectionType::class, [
-                'entry_type'=> ImageType::class,
-                'allow_add'=> true,
-                'prototype'=> true,
+            ->add('alt', TextType::class, [
+
+                'attr'=> [ 'class'=> 'form-control']
             ])
-            ->add('parent')
-            ->add('prix')
-            ->add('nbStar')
-            ->add('Save', SubmitType::class)
+
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Produit::class,
+            'data_class' => Image::class,
         ]);
     }
 }

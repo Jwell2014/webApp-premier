@@ -6,7 +6,18 @@
 <div class="container">
         <div class="row mt-3">
             <div class="col-md-4">
-                <img class="img-fluid" src="{{ produit.image }}">
+                <img class="img-fluid"  src="{{ asset('image/uploads/product/' ~ produit.image) }}">
+                <div class="row mt-3">
+                    {% for image in produit.images %}
+                        <div class="col-md-4">
+                            <img class="img-fluid" src="{{ asset('image/uploads/product/' ~ image.NomImage) }}" alt="{{ image.alt }}">
+                        </div>
+                    {% endfor %}
+
+                    <div class="col-md-4">
+                        <img class="img-fluid" src="{{ asset('image/uploads/product/' ~ produit.image) }}">
+                    </div>
+                </div>
             </div>
             <div class="col-md-8">
                 <h2>{{ produit.nom }}</h2>
