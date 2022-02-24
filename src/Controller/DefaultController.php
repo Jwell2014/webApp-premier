@@ -28,7 +28,7 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    #[Route('produit/{id}', name: 'detail')]
+    #[Route('detail/{id}', name: 'detail')]
     public function getOne(Produit $produit){
 
         return $this->render('default/produit.html.twig', [

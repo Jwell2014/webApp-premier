@@ -152,22 +152,23 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row"> <!-- align 12 colonnes -->
+                            {% for produit in produits %}
                             <div class="col-lg-3 col-sm-6">
 
                                 <div class="d-lg-flex">
                                     <div class="card3 rounded-start shadow border-0 me-lg-4 mb-lg-0 mb-4">
                                         <div class="backgroundEffect"></div>
-                                        <div class="pic"> <img class="" src="{{ asset('image/accessoirechat.jpeg') }}" alt="">
+                                        <div class="pic"> <img class="" src="{{ asset('image/uploads/product/' ~ produit.image) }}" alt="">
                                             <div class="date"> <span class="day">BEST</span> <span class="month">SALE</span> <span class="year">2022</span> </div>
                                         </div>
                                         <div class="content3">
-                                            <p class="h-1 mt-4">Accessoire pour Chat</p>
-                                            <p class="text-muted mt-3">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                            <p class="h-1 mt-4">{{ produit.nom|u.truncate(30, '...') }}</p>
+                                            <p class="text-muted mt-3">{{ produit.description|u.truncate(70, '...') }}</p>
                                             <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
-                                                <button class="btn3 btn-primary">Commander</button>
+                                                <button class="btn3 btn-primary"><a href="{{ path('panier_add', {'id': produit.id}) }}" class="text-decoration-none text-white">Ajouter au panier</a></button>
                                                 <div class="d-flex align-items-center justify-content-center foot">
-                                                    <p class="admin">19,90€</p>
-                                                    <p class="ps-3 icon text-muted"><span class="fas fa-comment-alt pe-1"></span>3</p>
+                                                    <p class="admin">{{ produit.prix }} €</p>
+                                                    <p class="ps-3 icon text-muted"><span class="fas fa-solid fa-star pe-1"></span>{{ produit.nbStar }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -175,75 +176,8 @@
                                 </div>
 
                             </div>
-                            <div class="col-lg-3 col-sm-6">
 
-                                <div class="d-lg-flex">
-                                    <div class="card3 rounded-start shadow border-0 me-lg-4 mb-lg-0 mb-4">
-                                        <div class="backgroundEffect"></div>
-                                        <div class="pic"> <img class="" src="{{ asset('image/accessoirechat.jpeg') }}" alt="">
-                                            <div class="date"> <span class="day">BEST</span> <span class="month">SALE</span> <span class="year">2022</span> </div>
-                                        </div>
-                                        <div class="content3">
-                                            <p class="h-1 mt-4">Accessoire pour Chat</p>
-                                            <p class="text-muted mt-3">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                            <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
-                                                <button class="btn3 btn-primary">Commander</button>
-                                                <div class="d-flex align-items-center justify-content-center foot">
-                                                    <p class="admin">19,90€</p>
-                                                    <p class="ps-3 icon text-muted"><span class="fas fa-comment-alt pe-1"></span>3</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-lg-3 col-sm-6">
-
-                                <div class="d-lg-flex">
-                                    <div class="card3 rounded-start shadow border-0 me-lg-4 mb-lg-0 mb-4">
-                                        <div class="backgroundEffect"></div>
-                                        <div class="pic"> <img class="" src="{{ asset('image/accessoirechat.jpeg') }}" alt="">
-                                            <div class="date"> <span class="day">BEST</span> <span class="month">SALE</span> <span class="year">2022</span> </div>
-                                        </div>
-                                        <div class="content3">
-                                            <p class="h-1 mt-4">Accessoire pour Chat</p>
-                                            <p class="text-muted mt-3">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                            <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
-                                                <button class="btn3 btn-primary">Commander</button>
-                                                <div class="d-flex align-items-center justify-content-center foot">
-                                                    <p class="admin">19,90€</p>
-                                                    <p class="ps-3 icon text-muted"><span class="fas fa-comment-alt pe-1"></span>3</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-lg-3 col-sm-6">
-
-                                <div class="d-lg-flex">
-                                    <div class="card3 rounded-start shadow border-0 me-lg-4 mb-lg-0 mb-4">
-                                        <div class="backgroundEffect"></div>
-                                        <div class="pic"> <img class="" src="{{ asset('image/accessoirechat.jpeg') }}" alt="">
-                                            <div class="date"> <span class="day">BEST</span> <span class="month">SALE</span> <span class="year">2022</span> </div>
-                                        </div>
-                                        <div class="content3">
-                                            <p class="h-1 mt-4">Accessoire pour Chat</p>
-                                            <p class="text-muted mt-3">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                            <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
-                                                <button class="btn3 btn-primary">Commander</button>
-                                                <div class="d-flex align-items-center justify-content-center foot">
-                                                    <p class="admin">19,90€</p>
-                                                    <p class="ps-3 icon text-muted"><span class="fas fa-comment-alt pe-1"></span>3</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -600,7 +534,7 @@
             <h2 class="text-center">⚡️ Il y a {{ produits|length }} produits en vente flash ⚡️</h2>
             {% for produit in produits %}
                 <div class="card m-1" style="width: 18rem;">
-                    <img src="{{ produit.image }}" class="card-img-top img-fluid" alt="...">
+                    <img src="{{ asset('image/uploads/product/' ~ produit.image) }}" class="card-img-top img-fluid" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ produit.nom }}</h5>
                         <p class="card-text">{{ produit.description|u.truncate(50, '...') }}</p>

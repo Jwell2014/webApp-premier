@@ -3,15 +3,20 @@
 {% block title %}Produit index{% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Produit index</h1>
+    <div class="container">
+    <h1 class="text-center my-5 text-decoration-underline">Tableau des produits</h1>
 
-    <table class="table">
+        <button class="float-end my-5 btn btn-outline-dark "><a href="{{ path('produit_new') }}" class="text-decoration-none">Créer un nouveau produit</a></button>
+
+
+        <table class="table table-dark table-striped my-5">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Image</th>
+                <th>Prix</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,8 +25,9 @@
             <tr>
                 <td>{{ produit.id }}</td>
                 <td>{{ produit.nom }}</td>
-                <td>{{ produit.description }}</td>
-                <td><img src="{{ produit.image }}"></td>
+                <td>{{ produit.description|u.truncate(100, '...') }}}</td>
+                <td><img class="img-thumbnail w-25" src="{{ asset('image/uploads/product/' ~ produit.image) }}"></td>
+                <td>{{ produit.prix }} €</td>
                 <td>
                     <a class="btn btn-success" href="{{ path('produit_show', {'id': produit.id}) }}">show</a>
                     <a class="btn btn-primary" href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>
@@ -35,5 +41,5 @@
         </tbody>
     </table>
 
-    <button><a href="{{ path('produit_new') }}">Create new</a></button>
+    </div>
 {% endblock %}

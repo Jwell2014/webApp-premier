@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\Produit;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class ProduitType extends AbstractType
 {
@@ -14,8 +16,25 @@ class ProduitType extends AbstractType
         $builder
             ->add('nom')
             ->add('description')
-            ->add('image')
+            ->add('image', FileType::class, [
+                'mapped'=> false,
+                'required'=> true,
+                'constraints'=> [
+                    new File([
+                        'maxSize'=> '2M',
+                        'maxSizeMessage'=> 'Votre fichier est trop lourd',
+                        'mimeTypes'=> [
+                            'image/jpeg',
+                            'image/png'
+                        ],
+                        'mimeTypesMessage'=> 'Veuillez télécharger une image JPG ou PNG'
+                    ])
+                ]
+
+            ])
             ->add('parent')
+            ->add('prix')
+            ->add('nbStar')
         ;
     }
 

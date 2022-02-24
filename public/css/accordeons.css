@@ -27,23 +27,23 @@
     height: 500px;
 }
 .a1 {
-    background-image: url("../image/chienSlide.jpg");
+    background-image: url("../image/uploads/product/chienSlide.jpg");
     color: #fff;
 }
 .a2 {
-    background-image: url("../image/chatSlide.jpg");
+    background-image: url("../image/uploads/product/chatSlide.jpg");
     color: #fff;
 }
 .a3 {
-    background-image: url("../image/chevalSlide.jpg");
+    background-image: url("../image/uploads/product/chevalSlide.jpg");
     color: #fff;
 }
 .a4 {
-    background-image: url("../image/oiseauslide.jpg");
+    background-image: url("../image/uploads/product/oiseauslide.jpg");
     color: #fff;
 }
 .a5 {
-    background-image: url("../image/lapinslide.jpg");
+    background-image: url("../image/uploads/product/lapinslide.jpg");
     color: #fff;
 }
 p {

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SearchController!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-3">
+        <h5>Moteur de recherche</h5>
+
+        {{ form_start(form) }}
+        {{ form_end(form) }}
+    </div>
+
+    <div class="row mt-3">
+        <h5>Résultat de la recherche</h5>
+
+        <div class="row mt-2">
+            <h2 class="text-center">⚡️ Il y a {{ produits|length }} produits en vente flash ⚡️</h2>
+            {% if produits|length == 0 %}
+                <div class="alert alert-danger" role="alert">
+                    Aucun produits trouvé !!
+                </div>
+            {% endif %}
+
+            {% for produit in produits %}
+                <div class="card m-1" style="width: 18rem;">
+                    <img  src="{{ asset('image/uploads/product/' ~ produit.image) }}" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ produit.nom }}</h5>
+                        <p class="card-text">{{ produit.description|u.truncate(50, '...') }}</p>
+                        <p class="card-text">{{ produit.prix }} €</p>
+                        <p class="card-text">{{ produit.nbStar }} </p>
+                        <a href="{{ path('panier_add', {'id': produit.id}) }}" class="btn btn-success">Ajouter au panier</a>
+                        <a href="{{ path('detail', {'id': produit.id}) }}" class="btn btn-primary">Détail de l'article</a>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

@@ -25,6 +25,11 @@ class Produit
     #[ORM\Column(type: 'float')]
     private $prix;
 
+    #[ORM\Column(type: 'integer')]
+    private $nbStar;
+
+
+
 
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'produits')]
     #[ORM\JoinColumn(nullable: false)]
@@ -96,5 +101,21 @@ class Produit
     public function __toString()
     {
         return $this->nom;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNbStar()
+    {
+        return $this->nbStar;
+    }
+
+    /**
+     * @param mixed $nbStar
+     */
+    public function setNbStar($nbStar): void
+    {
+        $this->nbStar = $nbStar;
     }
 }

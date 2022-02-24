@@ -47,4 +47,35 @@ class ProduitRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function search($filter){
+        $query = $this->createQueryBuilder('p')->leftJoin('p.parent', 'category');
+
+        if (!is_null($filter["searchBar"])){
+            $query->where('p.nom LIKE :nom')
+                  ->orWhere('p.description LIKE :nom')
+                  ->orWhere('category.nom LIKE :nom')
+                  ->setParameter('nom', '%'.$filter['searchBar'].'%');
+
+        }
+
+        if (!is_null($filter["category"])){
+            $query->andWhere('category = :category')->setParameter('category', $filter['category']);
+        }
+
+        if (!empty($filter["nbStar"])){
+            $query->andWhere('p.nbStar IN (:array)')->setParameter('array', $filter['nbStar']);
+        }
+
+        if(!is_null($filter["prixMin"])){
+            $query->andWhere('p.prix > :prixMin')->setParameter('prixMin', $filter['prixMin']);
+        }
+
+        if(!is_null($filter["prixMax"])){
+            $query->andWhere('p.prix < :prixMax')->setParameter('prixMax', $filter['prixMax']);
+        }
+
+
+        return $query->getQuery()->getResult();
+    }
 }

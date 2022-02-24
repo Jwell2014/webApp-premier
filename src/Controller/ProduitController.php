@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/produit')]
 class ProduitController extends AbstractController
@@ -23,13 +24,31 @@ class ProduitController extends AbstractController
     }
 
     #[Route('/new', name: 'produit_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface  $slugger): Response
     {
         $produit = new Produit();
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+                $imageProduit = $form->get('image')->getData();
+
+                    $originalFilename = pathinfo($imageProduit->getClientOriginalName(), PATHINFO_FILENAME);
+
+                    $safeFilename = $slugger->slug($originalFilename);
+                    $newFilename = $safeFilename.'-'.uniqid().'.'.$imageProduit->guessExtension();
+
+                    // Move the file to the directory where brochures are stored
+
+                        $imageProduit->move(
+                            $this->getParameter('product_image'),
+                            $newFilename
+                        );
+
+            $produit->setImage($newFilename);
+
             $entityManager->persist($produit);
             $entityManager->flush();
 
