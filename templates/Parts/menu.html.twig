@@ -53,6 +53,20 @@
                                             </ul>
                                         </li>
                                     </ul>
+                                    {% if app.user %}
+                                    <div>
+                                       <h6>Bonjour {{ app.user.email }}</h6>
+                                    </div>
+                                    {% endif  %}
+                                    {% if app.user %}
+                                    <div>
+                                        <a class="dropdown-item" style="color: white"  href="{{ path('app_logout') }}">Me deconnecter</a>
+                                    </div>
+                                    {% else %}
+                                    <div>
+                                        <a class="dropdown-item" style="color: white"  href="{{ path('app_login') }}">Me connecter</a>
+                                    </div>
+                                    {% endif %}
                                     <form class="d-flex">
                                       {#  <input class="form-control me-2" type="search" placeholder="Rechercher..." aria-label="Search">
                                         <button href="{{ path('search') }}" class="btn-outline-success" type="submit">
@@ -67,6 +81,7 @@
                         </nav>
                     </div>
                 </div>
+                {% if app.user and app.user.hasRole('ROLE_USER') %}
                 <div class="col-lg-1 col-sm-1 pt-4">
                     <a>
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16" >
@@ -74,6 +89,7 @@
                         </svg>
                     </a>
                 </div>
+
                 <div class="col-lg-1 col-sm-1 pt-4">
                     <a class="text-decoration-none" style="color: white" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Voir mon panier" href="{{ path('panier_list') }}">{{ app.session.get('panier')|length }}
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
@@ -81,6 +97,12 @@
                         </svg>
                     </a>
                 </div>
+
+                    {% elseif app.user and app.user.hasRole('ROLE_ADMIN') %}
+                        <div>
+                            <a class="dropdown-item" style="color: white"  href="{{ path('admin') }}">ADMIN</a>
+                        </div>
+                {% endif %}
 
             </div>
         </div>
