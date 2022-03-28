@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page chien{% endblock %}
+
+{% block body %}
+
+    <main>
+
+        <div class="container bootstrap snippets bootdey">
+            <div class="row">
+                <div class="profile-nav col-md-3">
+
+
+                    <div class="panel">
+                        <div class="user-heading round">
+                            <a href="#">
+                                <img src="{{ asset('image/uploads/product/pers1.png') }}" alt="">
+                            </a>
+
+                            <h1>Bonjour</h1>
+                            <p>{{ app.user.email }} </p>
+
+                        </div>
+
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="active"><a href="#"> <i class="fa fa-user"></i> Profile</a></li>
+                            <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span class="label label-warning pull-right r-activity">9</span></a></li>
+                            <li><a href="#"> <i class="fa fa-edit"></i> Edit profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="profile-info col-md-9">
+                    <div class="panel">
+                        <!-- bloc avec icone -->
+                        {#<footer class="panel-footer">
+                            <button class="btn btn-warning pull-right">Post</button>
+                            <ul class="nav nav-pills">
+                                <li>
+                                    <a href="#"><i class="fa fa-map-marker"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-camera"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class=" fa fa-film"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-microphone"></i></a>
+                                </li>
+                            </ul>
+                        </footer>#}
+                    </div>
+                    <div class="panel">
+
+                        <div class="panel-body bio-graph-info">
+                            <h1>Bio Graph</h1>
+                            <div class="row">
+                                <div class="bio-row">
+                                    <p><span>First Name </span>: <?php echo($_SESSION["firstname"]); ?></p>
+                                </div>
+                                <div class="bio-row">
+                                    <p><span>Last Name </span>: <?php echo($_SESSION["lastname"]); ?></p>
+                                </div>
+
+                                <div class="bio-row">
+                                    <p><span>Birthday</span>: {{ app.user.dateNaissance|date('d/m/Y') }} </p>
+                                </div>
+
+                                <div class="bio-row">
+                                    <p><span>Email </span>: {{ app.user.email }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 class="text-center mt-5"><a href="{{ path('default') }}">Retour</a></h2>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </main>
+
+
+
+
+
+
+
+
+    </body>
+    </html>
+
+
+{% endblock %}

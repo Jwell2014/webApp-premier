@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Créer un compte{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
 
-    {{ form_start(registrationForm) }}
+
+<div class="container">
+    <h1 class="text-center">Créer un compte</h1>
+
+
+        {{ form_start(registrationForm) }}
+
         {{ form_row(registrationForm.email) }}
 
         {{ form_row(registrationForm.plainPassword.first) }}
@@ -13,6 +18,7 @@
 
         {{ form_row(registrationForm.dateNaissance) }}
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn btn-success">Enregister</button>
     {{ form_end(registrationForm) }}
+</div>
 {% endblock %}

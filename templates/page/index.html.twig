@@ -1,0 +1,262 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page chien{% endblock %}
+
+{% block body %}
+
+	<main>
+
+			<!-- Mon Titre-->
+
+			<section class="p-2">
+                <div class="container">
+                    <div class="row"> <!-- align 12 colonnes -->
+                        <div class="col-lg-12 col-sm-6">
+                            <div>
+								<h2 class="text-center">Notre boutique pour chien</h2>
+								<h6 class="text-center">Choississez votre catégorie</h6>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+			<section class="py-5 bg-light">
+                <div class="container">
+                    <div class="row"> <!-- align 12 colonnes -->
+
+						<div class="col-xs-6 col-sm-4 hover-blur">
+								<a href="pagechiencroquette.html" title="">
+								<img src="{{ asset('image/uploads/product/chiend.jpg') }}" alt=""/>
+								<h2><span class="text-white">CROQUETTES</span></h2>
+								 </a>
+						</div>
+						<div class="col-xs-6 col-sm-4 hover-blur">
+								<a href="pagechienfriandise.html" title="">
+								<img src="{{ asset('image/uploads/product/chienm.jpg') }}" alt=""/>
+								<h2><span class="text-white">FRIANDISES</span></h2>
+								 </a>
+						</div>
+						<div class="col-xs-6 col-sm-4 hover-blur">
+								<a href="pagechienaccessoire.html" title="">
+								<img src="{{ asset('image/uploads/product/chieng.jpg') }}" alt=""/>
+								<h2><span class="text-white">ACCESSOIRES</span></h2>
+								 </a>
+						</div>
+                    </div>
+                	</div>
+            </section>
+
+		<!-- Mon Titre-->
+
+			<section class="p-2 bg-black text-white">
+                <div class="container">
+                    <div class="row"> <!-- align 12 colonnes -->
+                        <div class="col-lg-12 col-sm-6">
+                            <div>
+								<h2 class="text-center">Nos croquettes pour chien</h2>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+		<!-- Ici CATEGORIE-->
+
+			<section class="bg-black">
+                <div class="container mx-auto">
+                    <div class="row"> <!-- align 12 colonnes -->
+						<aside class="col-xs-6 col-sm-3">
+							<div class="accordion" id="accordionPanelsStayOpenExample">
+
+							  <div class="accordion-item">
+								<h2 class="accordion-header" id="panelsStayOpen-headingOne">
+								  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+									CHIEN
+								  </button>
+								</h2>
+								<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+								  <div class="accordion-body">
+									<a class="lienproduit" href="pagechiencroquette.html" title="">
+									<p>Croquette</p>
+								 	</a>
+									<a class="lienproduit" href="pagechienfriandise.html" title="">
+									<p>Friandise</p>
+								 	</a>
+									<a class="lienproduit" href="pagechienaccessoire.html" title="">
+									<p>Accessoire</p>
+									 </a>
+								  </div>
+								</div>
+							  </div>
+
+							  <div class="accordion-item">
+								<h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+								  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+									CHAT
+								  </button>
+								</h2>
+								<div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
+								   <div class="accordion-body">
+									<a class="lienproduit" href="pagechiencroquette.html" title="">
+									<p>Croquette</p>
+								 	</a>
+									<a class="lienproduit" href="pagechienfriandise.html" title="">
+									<p>Friandise</p>
+								 	</a>
+									<a class="lienproduit" href="pagechienaccessoire.html" title="">
+									<p>Accessoire</p>
+									 </a>
+								  </div>
+								</div>
+							  </div>
+
+							  <div class="accordion-item">
+								<h2 class="accordion-header" id="panelsStayOpen-headingThree">
+								  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+									CHEVAL
+								  </button>
+								</h2>
+								<div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
+								   <div class="accordion-body">
+									<a class="lienproduit" href="pagechiencroquette.html" title="">
+									<p>Croquette</p>
+								 	</a>
+									<a class="lienproduit" href="pagechienfriandise.html" title="">
+									<p>Friandise</p>
+								 	</a>
+									<a class="lienproduit" href="pagechienaccessoire.html" title="">
+									<p>Accessoire</p>
+									 </a>
+								  </div>
+								</div>
+							  </div>
+							  <div class="accordion-item">
+								<h2 class="accordion-header" id="panelsStayOpen-headingFour">
+								  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+									OISEAU
+								  </button>
+								</h2>
+								<div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
+								   <div class="accordion-body">
+									<a class="lienproduit" href="pagechiencroquette.html" title="">
+									<p>Croquette</p>
+								 	</a>
+									<a class="lienproduit" href="pagechienfriandise.html" title="">
+									<p>Friandise</p>
+								 	</a>
+									<a class="lienproduit" href="pagechienaccessoire.html" title="">
+									<p>Accessoire</p>
+									 </a>
+								  </div>
+								</div>
+							  </div>
+							  <div class="accordion-item">
+								<h2 class="accordion-header" id="panelsStayOpen-headingFive">
+								  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+									RONGEUR
+								  </button>
+								</h2>
+								<div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingFive">
+								  <div class="accordion-body">
+									<a class="lienproduit" href="pagechiencroquette.html" title="">
+									<p>Croquette</p>
+								 	</a>
+									<a class="lienproduit" href="pagechienfriandise.html" title="">
+									<p>Friandise</p>
+								 	</a>
+									<a class="lienproduit" href="pagechienaccessoire.html" title="">
+									<p>Accessoire</p>
+									 </a>
+								  </div>
+								</div>
+							  </div>
+							</div>
+						</aside>
+						<div class="col-xs-6 col-sm-9 pt-2">
+						   <div class="row">
+							<div class="col-lg-4 col-sm-4">
+                               <label for="Catégorie" class="text-white">Catégorie</label>
+                               <select name="Catégorie">
+                                 <option value="Normale">Normale</option>
+                                 <option value="Léger">Léger</option>
+                                 <option value="Stérile">Stérile</option>
+                               </select>
+							</div>
+							<div class="col-lg-4 col-sm-4">
+                               <label for="year" class="text-white">Age</label>
+                               <select name="year">
+                                 <option value="Normale">Chiot</option>
+                                 <option value="Léger">Adulte</option>
+                                 <option value="Stérile">Sénior</option>
+                               </select>
+							</div>
+
+							</div>
+
+							<div class="row">
+
+								{% for produit in produits %}
+							<div class="col-lg-4 col-sm-8">
+			                    <div class="d-lg-flex py-5">
+									<div class="card3 border-0 me-lg-4 mb-lg-0 mb-4">
+										<div class="backgroundEffect"></div>
+										<div class="pic"> <img class="" src="{{ asset('image/uploads/product/' ~ produit.image) }}" alt="">
+										</div>
+										<div class="content3">
+											<p class="h-1 mt-4">{{ produit.nom|u.truncate(20, '...') }}</p>
+											<p class="text-muted mt-3">{{ produit.description|u.truncate(50, '...') }}{{ produit.description|u.truncate(50, '...') }}</p>
+											<div class="d-flex align-items-center justify-content-between mt-3 pb-3">
+												<button class="btn3 btn-primary"><a href="{{ path('panier_add', {'id': produit.id}) }}" class="text-decoration-none text-white">Ajouter au panier</a></button>
+												<div class="d-flex align-items-center justify-content-center foot">
+													<p class="admin">{{ produit.prix }} €</p>
+													<p class="ps-3 icon text-muted"><span class="fas fa-comment-alt pe-1"></span>{{ produit.nbStar }}</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+			                </div>
+								{% endfor %}
+			            </div>
+					 	</div>
+                	</div>
+				</div>
+		  </section>
+		<div class="row mt-2">
+			<h2 class="text-center">⚡️ Il y a {{ produits|length }} produits en vente flash ⚡️</h2>
+			{% for produit in produits %}
+				<div class="card m-1" style="width: 18rem;">
+					<img src="{{ asset('image/uploads/product/' ~ produit.image) }}" class="card-img-top img-fluid" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">{{ produit.nom }}</h5>
+						<p class="card-text">{{ produit.description|u.truncate(50, '...') }}</p>
+						<p class="card-text">{{ produit.prix }} €</p>
+						<a href="{{ path('panier_add', {'id': produit.id}) }}" class="btn btn-success">Ajouter au panier</a>
+						<a href="{{ path('detail', {'id': produit.id}) }}" class="btn btn-primary">Détail de l'article</a>
+
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+
+
+
+
+
+	</main>
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+{% endblock %}
