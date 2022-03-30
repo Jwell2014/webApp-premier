@@ -4,7 +4,9 @@
 
 {% block body %}
 <div class="container">
-        <div class="row mt-3">
+    <a class="btn btn-primary" href="{{ path('page') }}">Retour</a>
+
+    <div class="row mt-3">
             <div class="col-md-4">
                 <img class="img-fluid"  src="{{ asset('image/uploads/product/' ~ produit.image) }}">
                 <div class="row mt-3">
@@ -22,10 +24,28 @@
             <div class="col-md-8">
                 <h2>{{ produit.nom }}</h2>
                 <br>
+                <h5>Description : </h5>
                 <span>{{ produit.description }}</span>
+                <h5>Tarif : </h5>
+                <p>{{ produit.prix }} €</p>
+                <h5>Nombre étoiles: </h5>
+                <p>{% if produit.nbStar is same as(1)%}
+                        ⭐️
+                    {% elseif produit.nbStar is same as(2)%}
+                        ⭐️⭐️
+                    {% elseif produit.nbStar is same as(3)%}
+                        ⭐️⭐️⭐️
+                    {% elseif produit.nbStar is same as(4)%}
+                        ⭐️⭐️⭐⭐️
+                    {% elseif produit.nbStar is same as(5)%}
+                        ⭐️⭐️⭐⭐️⭐️
+                    {% endif %}</p>
+                <button class="btn3 btn-outline-primary"><a href="{{ path('panier_add', {'id': produit.id}) }}" class="text-decoration-none">Ajouter au panier</a></button>
+
             </div>
 
         </div>
-    <a class="btn btn-primary" href="{{ path('default') }}">Retour</a>
+
+
 </div>
 {% endblock %}

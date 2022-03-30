@@ -22,7 +22,7 @@
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle navbarScrollingDropdown couleur" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Boutique
+                                                CATÉGORIE
                                             </a>
                                             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                                 <li><a class="dropdown-item" href="{{ path('page') }}">Chien</a></li>
@@ -36,7 +36,7 @@
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle navbarScrollingDropdown couleur" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Voyage dans l'espace
+                                                VOYAGE DANS L'ESPACE
                                             </a>
                                             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                                 <li><a class="dropdown-item" href="#">Voyage</a></li>
@@ -45,7 +45,7 @@
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle navbarScrollingDropdown couleur" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Présentation
+                                                PRÉSENTATION
                                             </a>
                                             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                                 <li><a class="dropdown-item" href="#">La Nimes'Alerie</a></li>
@@ -83,10 +83,10 @@
                             </svg>
                         </a>
                     </div>
-
-                    {% elseif app.user and app.user.hasRole('ROLE_ADMIN') %}
+                {% endif %}
+                    {% if app.user and app.user.hasRole('ROLE_ADMIN') %}
                         <div>
-                            <a class="dropdown-item" style="color: white"  href="{{ path('admin') }}">ADMIN</a>
+                            <a class="float-end btn btn-outline-primary"  href="{{ path('produit_index') }}">DASHBORD</a>
                         </div>
                 {% endif %}
 
@@ -96,7 +96,7 @@
                     <div>
                         <h6 class="float-start">Bonjour {{ app.user.email }}</h6>
 
-                        <a class="float-end btn btn-danger" style="color: white"  href="{{ path('app_logout') }}">Me deconnecter</a>
+                        <a class="float-end btn btn-outline-danger px-1 my-2" style="color: white"  href="{{ path('app_logout') }}">Me deconnecter</a>
                     </div>
                 {% else %}
                     <div>

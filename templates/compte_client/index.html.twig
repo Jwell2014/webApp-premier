@@ -14,7 +14,7 @@
                     <div class="panel">
                         <div class="user-heading round">
                             <a href="#">
-                                <img src="{{ asset('image/uploads/product/pers1.png') }}" alt="">
+                                <img class="img-thumbnail" src="{{ asset('image/uploads/user/' ~ app.user.image) }}" alt="">
                             </a>
 
                             <h1>Bonjour</h1>
@@ -56,10 +56,10 @@
                             <h1>Bio Graph</h1>
                             <div class="row">
                                 <div class="bio-row">
-                                    <p><span>First Name </span>: <?php echo($_SESSION["firstname"]); ?></p>
+                                    <p><span>First Name </span>: {{ app.user.name }}</p>
                                 </div>
                                 <div class="bio-row">
-                                    <p><span>Last Name </span>: <?php echo($_SESSION["lastname"]); ?></p>
+                                    <p><span>Last Name </span>: {{ app.user.firstname }}</p>
                                 </div>
 
                                 <div class="bio-row">

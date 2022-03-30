@@ -12,12 +12,14 @@
         <table class="table table-dark table-striped my-5">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Prix</th>
-                <th>actions</th>
+                <th>ID</th>
+                <th>NOM</th>
+                <th>DESCRIPTION</th>
+                <th>IMAGE</th>
+                <th>PRIX</th>
+                <th>PRODUIT PHARE</th>
+                <th>NB STAR</th>
+                <th>ACTIONS</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +30,20 @@
                 <td>{{ produit.description|u.truncate(100, '...') }}}</td>
                 <td><img class="img-thumbnail w-25" src="{{ asset('image/uploads/product/' ~ produit.image) }}"></td>
                 <td>{{ produit.prix }} €</td>
+                <td>
+                    {% if produit.nbStar is same as(1)%}
+                        ⭐️
+                    {% elseif produit.nbStar is same as(2)%}
+                        ⭐️⭐️
+                    {% elseif produit.nbStar is same as(3)%}
+                        ⭐️⭐️⭐️
+                    {% elseif produit.nbStar is same as(4)%}
+                        ⭐️⭐️⭐⭐️
+                    {% elseif produit.nbStar is same as(5)%}
+                        ⭐️⭐️⭐⭐️⭐️
+                    {% endif %}
+                </td>
+                <td>{{ produit.produitPhare ? 'Oui' : 'Non' }}</td>
                 <td>
                     <a class="btn btn-success" href="{{ path('produit_show', {'id': produit.id}) }}">show</a>
                     <a class="btn btn-primary" href="{{ path('produit_edit', {'id': produit.id}) }}">edit</a>

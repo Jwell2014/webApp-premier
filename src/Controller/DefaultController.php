@@ -20,10 +20,21 @@ class DefaultController extends AbstractController
     #[Route('/', name: 'default')]
     public function index(): Response
     {
-        $produits = $this->produitRepository->findAll();
+        $produits = $this->produitRepository->findBy(['produitPhare' => true]);
+        $produitphare= [];
         $date = new \DateTime();
+        if($produits){
+            shuffle($produits);
+            $i=0;
+            $j=0;
+            foreach ($produits as $produit){
+                if ($i%4 == 0) $j++;
+                $produitphare[$j][] = $produit;
+                $i++;
+            }
+        }
         return $this->render('default/index.html.twig', [
-            'produits' => $produits,
+            'produitphare' => $produitphare,
             'date' => $date,
         ]);
     }

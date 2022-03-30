@@ -208,12 +208,15 @@
 											<p class="h-1 mt-4">{{ produit.nom|u.truncate(20, '...') }}</p>
 											<p class="text-muted mt-3">{{ produit.description|u.truncate(50, '...') }}{{ produit.description|u.truncate(50, '...') }}</p>
 											<div class="d-flex align-items-center justify-content-between mt-3 pb-3">
-												<button class="btn3 btn-primary"><a href="{{ path('panier_add', {'id': produit.id}) }}" class="text-decoration-none text-white">Ajouter au panier</a></button>
+
 												<div class="d-flex align-items-center justify-content-center foot">
 													<p class="admin">{{ produit.prix }} €</p>
-													<p class="ps-3 icon text-muted"><span class="fas fa-comment-alt pe-1"></span>{{ produit.nbStar }}</p>
+													<p class="ps-3 icon text-muted"><span class="fas fa-solid fa-star pe-1"></span>{{ produit.nbStar }}</p>
 												</div>
+												<button class="btn3 btn-primary"><a href="{{ path('detail', {'id': produit.id}) }}" class="text-decoration-none text-black">Détail du produit</a></button>
+
 											</div>
+											<button class="btn3 btn-primary"><a href="{{ path('panier_add', {'id': produit.id}) }}" class="text-decoration-none text-white">Ajouter au panier</a></button>
 										</div>
 									</div>
 								</div>
@@ -225,7 +228,7 @@
 				</div>
 		  </section>
 		<div class="row mt-2">
-			<h2 class="text-center">⚡️ Il y a {{ produits|length }} produits en vente flash ⚡️</h2>
+			<h2 class="text-center">⚡️ Il y a {{ produits|length }} produits en vente⚡️</h2>
 			{% for produit in produits %}
 				<div class="card m-1" style="width: 18rem;">
 					<img src="{{ asset('image/uploads/product/' ~ produit.image) }}" class="card-img-top img-fluid" alt="...">

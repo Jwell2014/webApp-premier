@@ -27,6 +27,9 @@ class Produit
     #[ORM\Column(type: 'float')]
     private $prix;
 
+    #[ORM\Column(type: 'boolean')]
+    private $produitPhare;
+
     #[ORM\Column(type: 'integer')]
     private $nbStar;
 
@@ -84,6 +87,22 @@ class Produit
         $this->image = $image;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProduitPhare()
+    {
+        return $this->produitPhare;
+    }
+
+    /**
+     * @param mixed $produitPhare
+     */
+    public function setProduitPhare($produitPhare): void
+    {
+        $this->produitPhare = $produitPhare;
     }
 
     public function getPrix()
