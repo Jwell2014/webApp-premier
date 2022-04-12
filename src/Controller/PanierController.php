@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\Entity\ProductOrder;
 use App\Entity\Produit;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/panier', name: 'panier_')]
+#[IsGranted('ROLE_USER')]
 class PanierController extends AbstractController{
 
     #[Route('/', name: 'list')]
