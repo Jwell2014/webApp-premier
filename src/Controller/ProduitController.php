@@ -112,7 +112,7 @@ class ProduitController extends AbstractController
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$imageProduit->guessExtension();
 
 
-                // j'upload le fichier ans le dossier contenu dans services.yamlqui a la clé product.image
+                // j'upload le fichier dans le dossier contenu dans services.yaml qui a la clé product.image
                 // Je l'upload avec son  ouveau nom
                 $imageProduit->move(
                     $this->getParameter('product_image'),

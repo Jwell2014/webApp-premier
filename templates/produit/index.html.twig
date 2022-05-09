@@ -27,7 +27,7 @@
             <tr>
                 <td>{{ produit.id }}</td>
                 <td>{{ produit.nom }}</td>
-                <td>{{ produit.description|u.truncate(100, '...') }}}</td>
+                <td>{{ produit.description|u.truncate(100, '...') }}</td>
                 <td><img class="img-thumbnail w-25" src="{{ asset('image/uploads/product/' ~ produit.image) }}"></td>
                 <td>{{ produit.prix }} €</td>
                 <td>
